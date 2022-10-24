@@ -17,7 +17,7 @@ export default function App() {
         <h1>Hello World</h1>
         <p>Count: {count}</p>
         <p>
-          <button onClick={() => setCount(count + 1)}>Click me</button>
+          <button onClick={() => React.startTransition(() => setCount(count + 1))}>Click me</button>
         </p>
         <React.Suspense fallback={<SuspendedFallback />}>
           <SuspendedThing />
