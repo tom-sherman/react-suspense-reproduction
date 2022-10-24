@@ -19,9 +19,7 @@ export default function App() {
         <p>
           <button onClick={() => setCount(count + 1)}>Click me</button>
         </p>
-        <React.Suspense fallback={<SuspendedFallback />}>
-          <SuspendedThing />
-        </React.Suspense>
+        <Thing />
 
         <HydrationScript />
         <script async type="module" src="/script.js" />
@@ -29,6 +27,14 @@ export default function App() {
     </html>
   );
 }
+
+const Thing = React.memo(function Thing() {
+  return (
+    <React.Suspense fallback={<SuspendedFallback />}>
+      <SuspendedThing />
+    </React.Suspense>
+  );
+});
 
 function HydrationScript() {
   let script = "window.__testContext = {};";
